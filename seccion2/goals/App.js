@@ -6,7 +6,15 @@ export default function App() {
       <View >
         <Text>SOMETHING </Text>
       </View>
-      <Text>Hello There!!!</Text>
+      {/* inline style */}
+      <Text style={
+        {
+          margin: 20,
+          borderWidth: 1,
+          borderColor: 'red',
+          padding:16
+        }
+      }>Hello There!!!</Text>
       <Button title='something' />
     </View>
   );
