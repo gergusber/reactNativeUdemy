@@ -1,30 +1,42 @@
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <View >
-        <Text>SOMETHING </Text>
+    <View style={styles.appContainer}>
+      <View style={styles.inputContainer}>
+        <TextInput style={styles.TextInput} placeholder='your course goal' />
+        <Button title='Add Goal' />
       </View>
-      {/* inline style */}
-      <Text style={
-        {
-          margin: 20,
-          borderWidth: 1,
-          borderColor: 'red',
-          padding:16
-        }
-      }>Hello There!!!</Text>
-      <Button title='something' />
+      <View style={styles.goalsContainer}>
+        <Text>List of goals</Text>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  appContainer:{
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 50,
+    paddingHorizontal:16,    
   },
+  inputContainer:{
+    flex: 1,
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItems: 'center',
+    marginBottom: 24,
+    borderBottomWidth: 1,
+    borderBottomColor: 'gray'
+  },
+  TextInput:{
+    borderWidth:1,
+    borderColor:'#cccccc',
+    width: '70%',
+    marginRight: 8,
+    padding:8
+  },
+  goalsContainer: {
+    flex: 5,
+  }
 });
