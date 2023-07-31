@@ -8,6 +8,8 @@ import {
   FlatList
 } from 'react-native';
 import { useState } from 'react';
+import GoalItem from './components/goalItem'
+
 
 export default function App() {
   const [goal, setGoal] = useState("");
@@ -47,9 +49,7 @@ export default function App() {
           // itemData.item => the item that is inside the data
           const { item } = itemData;
           return (
-            <View style={styles.goalItem}>
-              <Text style={styles.textGoalItem}>{item.text}</Text>
-            </View>
+            <GoalItem text={item.text} />
           )
         }} />
       </View>
@@ -82,13 +82,4 @@ const styles = StyleSheet.create({
   goalsContainer: {
     flex: 5,
   },
-  goalItem: {
-    margin: 8,
-    borderRadius: 6,
-    padding: 8,
-    backgroundColor: '#5e0acc'
-  },
-  textGoalItem: {
-    color: 'white',
-  }
 });
