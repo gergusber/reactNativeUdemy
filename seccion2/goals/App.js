@@ -14,6 +14,13 @@ export default function App() {
   const addGoalHandler = (goal) => {
     setGoals(currentGoals => [...currentGoals, { text: goal, id: Math.random().toString() }])
   }
+  
+  const deleteItemHandler = (id) => {
+    console.log('Delete item');
+    setGoals(currentGoals => {
+      return currentGoals.filter(x => x.id !== id);
+    })
+  }
 
   return (
     <View style={styles.appContainer}>
@@ -29,7 +36,7 @@ export default function App() {
           renderItem={itemData => {
             const { item } = itemData;
             return (
-              <GoalItem text={item.text} />
+              <GoalItem id={item.id} text={item.text} onDeleteItem={deleteItemHandler} />
             )
           }} />
       </View>
