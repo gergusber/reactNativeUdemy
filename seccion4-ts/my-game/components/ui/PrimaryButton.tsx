@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   btnOutercontainer: {
     borderRadius: 28,
     margin: 4,
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   btnInnerContainer: {
     backgroundColor: '#72063c',

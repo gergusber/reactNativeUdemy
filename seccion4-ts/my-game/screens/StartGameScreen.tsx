@@ -7,7 +7,7 @@ const StartGameScreen = () => {
   }
 
   const handler2 = () => {
-    
+
   }
 
   return (
@@ -19,8 +19,16 @@ const StartGameScreen = () => {
         inputMode='numeric'
         autoCapitalize='none'
         autoCorrect={false} />
-      <PrimaryButton handler={handler1}>Reset</PrimaryButton>
-      <PrimaryButton handler={handler2}>Confirm</PrimaryButton>
+
+      <View style={styles.containerActions}>
+        <View style={styles.btnContainer} >
+          <PrimaryButton handler={handler1}>Reset</PrimaryButton>
+        </View>
+        <View style={styles.btnContainer}>
+          <PrimaryButton handler={handler2}>Confirm</PrimaryButton>
+        </View>
+      </View>
+
     </View>
   )
 }
@@ -39,7 +47,9 @@ const styles = StyleSheet.create({
       height: 2
     },
     shadowRadius: 6,
-    shadowOpacity: 0.25
+    shadowOpacity: 0.25,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   numberInput: {
     height: 50,
@@ -51,6 +61,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     width: 50,
     textAlign: 'center',
+  },
+  containerActions: {
+    flexDirection: 'row'
+  },
+  btnContainer: {
+    flex: 1
   }
 });
 
