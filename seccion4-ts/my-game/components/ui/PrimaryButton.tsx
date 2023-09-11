@@ -13,7 +13,7 @@ interface Props {
 const PrimaryButton = ({ children, handler }: Props) => {
 
   return (
-    <View style={styles.btnOutercontainer}>
+    <View style={styles.btnOuterContainer}>
       <Pressable
         style={({ pressed }) => pressed ? [styles.btnInnerContainer, styles.pressed] : styles.btnInnerContainer}
         onPress={handler}
@@ -26,7 +26,7 @@ const PrimaryButton = ({ children, handler }: Props) => {
 }
 
 const styles = StyleSheet.create({
-  btnOutercontainer: {
+  btnOuterContainer: {
     borderRadius: 28,
     margin: 4,
     overflow: 'hidden',

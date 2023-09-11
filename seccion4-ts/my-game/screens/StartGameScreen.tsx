@@ -1,13 +1,33 @@
-import { TextInput, View, StyleSheet } from 'react-native'
+import { TextInput, View, StyleSheet, NativeSyntheticEvent, TextInputChangeEventData, Alert } from 'react-native'
 import PrimaryButton from '../components/ui/PrimaryButton'
+import { useState } from 'react'
 
-const StartGameScreen = () => {
-  const handler1 = () => {
 
+interface TYPE_START_GAME_SCREEN {
+  pickNumber: (n: number) => void
+}
+
+const StartGameScreen = (props: TYPE_START_GAME_SCREEN) => {
+  const [enteredNumber, setEnteredNumber] = useState('')
+
+  const resetInputHandler = () => { setEnteredNumber('') }
+  const confirmDataHandler = () => {
+    const choseNumber = parseInt(enteredNumber)
+
+    if (isNaN(choseNumber) || choseNumber <= 0 || choseNumber > 99) {
+      Alert.alert(
+        "Invalid Number",
+        "Number has to be between 1 and 99",
+        [{ text: 'okay', style: 'destructive', onPress: resetInputHandler }] //Button that provides the Alert.alert() that is native error 
+      )
+      return
+    }
+    console.log('Valid number');
+    props.pickNumber(choseNumber)
   }
 
-  const handler2 = () => {
-
+  const numberInputHandler = (event: NativeSyntheticEvent<TextInputChangeEventData>) => {
+    setEnteredNumber(event.nativeEvent.text)
   }
 
   return (
@@ -18,14 +38,16 @@ const StartGameScreen = () => {
         keyboardType='number-pad'
         inputMode='numeric'
         autoCapitalize='none'
-        autoCorrect={false} />
+        autoCorrect={false}
+        onChange={numberInputHandler}
+        value={enteredNumber} />
 
       <View style={styles.containerActions}>
         <View style={styles.btnContainer} >
-          <PrimaryButton handler={handler1}>Reset</PrimaryButton>
+          <PrimaryButton handler={resetInputHandler}>Reset</PrimaryButton>
         </View>
         <View style={styles.btnContainer}>
-          <PrimaryButton handler={handler2}>Confirm</PrimaryButton>
+          <PrimaryButton handler={confirmDataHandler}>Confirm</PrimaryButton>
         </View>
       </View>
 
